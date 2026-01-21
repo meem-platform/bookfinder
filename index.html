@@ -4,71 +4,124 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BookFinder – Academic Book Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Unikurd+Jino&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Unikurd+Jino&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      text-align: center;
-      padding: 40px 20px;
       background: #f5f7ff;
       color: #333;
+      padding: 20px;
+      line-height: 1.6;
     }
+
     .container {
       max-width: 600px;
       margin: 0 auto;
     }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.12);
+      padding: 32px 24px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
     h1 {
-      color: #3A50D1;
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       font-size: 28px;
-      margin-bottom: 20px;
+      color: #3A50D1;
+      margin-bottom: 24px;
     }
+
     .kurdish-text {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       font-size: 18px;
-      margin: 20px 0;
-      line-height: 1.5;
+      margin: 24px 0;
+      line-height: 1.6;
+      color: #444;
     }
+
     .download-btn {
       display: inline-block;
-      margin: 20px 0;
-      padding: 14px 32px;
+      margin: 24px 0;
+      padding: 16px 64px; /* Increased horizontal padding for longer button */
       background: #3A50D1;
       color: white;
       text-decoration: none;
       border-radius: 50px;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
+      transition: background 0.3s ease;
     }
+
     .download-btn:hover {
       background: #2a3db5;
     }
+
     .note {
-      background: #fff8e1;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 20px;
-      font-size: 14px;
+      background: #f0f4ff;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 24px;
+      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 15px;
+      color: #555;
+      line-height: 1.5;
     }
+
     .footer {
       margin-top: 40px;
       font-size: 14px;
       color: #666;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .kurdish-text {
+        font-size: 16px;
+      }
+
+      .download-btn {
+        padding: 14px 48px;
+        font-size: 18px;
+      }
+
+      .note {
+        font-size: 14px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>بەخێر بێیت بۆ پلاتفۆڕمی میم</h1>
-    
-    <div class="kurdish-text">بۆ دابەزاندنی ئەپڵیکەیشنی بوك فایندەر، تکایە پەنجە بەو دوگمەیەی خوارەوەدا بنێ</div>
-    
-    <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI  " class="download-btn">دابــەزانــدن</a>
+    <div class="card">
+      <h1>بەخێر بێیت بۆ پلاتفۆڕمی میم</h1>
+      
+      <div class="kurdish-text">بۆ دابەزاندنی ئەپڵیکەیشنی بوك فایندەر، تکایە پەنجە بەو دوگمەیەی خوارەوەدا بنێ</div>
+      
+      <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI" class="download-btn">دابــەزانــدن</a>
 
-    <div class="note">
-      ⚠️ After download, tap the file and allow "Install unknown apps" for your browser.
+      <div class="note">
+        ئەگەر داوات لێ کرا، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت جێگیر ببێت.
+      </div>
     </div>
 
     <div class="footer">
