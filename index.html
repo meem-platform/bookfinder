@@ -30,15 +30,22 @@
       border-radius: 16px;
       box-shadow: 0 6px 20px rgba(58, 80, 209, 0.12);
       padding: 32px 24px;
-      margin-top: 32px;
+      margin-bottom: 24px;
       text-align: center;
+    }
+
+    /* Welcome card */
+    .welcome-card {
+      background: #f0f4ff;
+      border: 1px solid #dbe2ff;
     }
 
     h1 {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       font-size: 28px;
       color: #3A50D1;
-      margin-bottom: 24px;
+      direction: rtl;
+      unicode-bidi: embed;
     }
 
     .kurdish-text {
@@ -47,12 +54,14 @@
       margin: 24px 0;
       line-height: 1.6;
       color: #444;
+      direction: rtl;
+      unicode-bidi: embed;
     }
 
     .download-btn {
       display: inline-block;
       margin: 24px 0;
-      padding: 16px 64px; /* Increased horizontal padding for longer button */
+      padding: 16px 64px;
       background: #3A50D1;
       color: white;
       text-decoration: none;
@@ -68,7 +77,7 @@
     }
 
     .note {
-      background: #f0f4ff;
+      background: #f9faff;
       padding: 16px;
       border-radius: 12px;
       margin-top: 24px;
@@ -76,10 +85,13 @@
       font-size: 15px;
       color: #555;
       line-height: 1.5;
+      direction: rtl;
+      unicode-bidi: embed;
+      text-align: right;
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 20px;
       font-size: 14px;
       color: #666;
       text-align: center;
@@ -99,22 +111,29 @@
       }
 
       .download-btn {
-        padding: 14px 48px;
+        width: 100%;
+        padding: 16px;
         font-size: 18px;
+        border-radius: 50px;
       }
 
       .note {
         font-size: 14px;
         padding: 12px;
+        text-align: right;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="card">
+    <!-- Welcome Card -->
+    <div class="card welcome-card">
       <h1>بەخێر بێیت بۆ پلاتفۆڕمی میم</h1>
-      
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card">
       <div class="kurdish-text">بۆ دابەزاندنی ئەپڵیکەیشنی بوك فایندەر، تکایە پەنجە بەو دوگمەیەی خوارەوەدا بنێ</div>
       
       <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI" class="download-btn">دابــەزانــدن</a>
