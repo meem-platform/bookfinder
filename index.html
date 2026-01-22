@@ -33,10 +33,10 @@
       margin-bottom: 24px;
     }
 
-    /* Welcome card */
+    /* Welcome card — updated with professional soft blue */
     .welcome-card {
-      background: #f0f4ff;
-      border: 1px solid #dbe2ff;
+      background: #eef2ff; /* softer, cleaner than f0f4ff */
+      border: 1px solid #cdd6ff;
     }
 
     /* Kurdish text styles */
@@ -98,8 +98,18 @@
       unicode-bidi: embed;
     }
 
+    .contact-instruction {
+      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
+      direction: rtl;
+      text-align: center;
+      unicode-bidi: embed;
+      font-size: 18px;
+      margin: 24px 0 16px;
+      color: #333;
+    }
+
     .footer {
-      margin-top: 20px;
+      margin-top: 60px; /* ~3–4 lines of space */
       font-size: 14px;
       color: #666;
       text-align: center;
@@ -121,7 +131,8 @@
         font-size: 24px;
       }
 
-      .instruction {
+      .instruction,
+      .contact-instruction {
         font-size: 16px;
       }
 
@@ -135,6 +146,10 @@
       .note {
         font-size: 14px;
         padding: 12px;
+      }
+
+      .footer {
+        margin-top: 50px;
       }
     }
   </style>
@@ -157,6 +172,11 @@
       <div class="kurdish-text note">
         دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر پێویستی کرد، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
       </div>
+    </div>
+
+    <!-- New Kurdish instruction line -->
+    <div class="contact-instruction">
+      ئەگەر پرسیارت هەبوو یان پێویستت بە هەر هاوکارییەك بوو، دوودڵ مەبە و پەیوەندیمان پێوە بکە:
     </div>
 
     <div class="footer">
