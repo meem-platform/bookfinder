@@ -62,9 +62,14 @@
       color: #444;
     }
 
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
     .download-btn {
       display: inline-block;
-      margin: 24px 0;
       padding: 16px 64px;
       background: #3A50D1;
       color: white;
@@ -74,6 +79,7 @@
       font-weight: bold;
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       transition: background 0.3s ease;
+      text-align: center;
     }
 
     .download-btn:hover {
@@ -100,6 +106,10 @@
       direction: ltr;
       unicode-bidi: embed;
       line-height: 1.6;
+    }
+
+    .footer p {
+      margin: 6px 0;
     }
 
     @media (max-width: 480px) {
@@ -140,7 +150,9 @@
     <div class="card">
       <div class="kurdish-text instruction">بۆ دابەزاندنی ئەپڵیکەیشنی BookFinder، تکایە کلیك لە دوگمەی "دابەزاندن" بکە.</div>
       
-      <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI" class="download-btn">دابــەزانــدن</a>
+      <div class="button-container">
+        <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI" class="download-btn">دابــەزانــدن</a>
+      </div>
 
       <div class="kurdish-text note">
         دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر پێویستی کرد، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
@@ -149,8 +161,8 @@
 
     <div class="footer">
       <p>Email: s.mubarakmohammed25@gmail.com<br>Phone number: 0750 467 5309</p>
-      <p>Developed by: Mubarak Mohammed</p>
-      <p>Copyright 2026</p>
+      <p style="margin-top: 16px;">Developed by: Mubarak Mohammed</p>
+      <p>Copyright © 2026</p>
     </div>
   </div>
 </body>
