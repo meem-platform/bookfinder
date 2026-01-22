@@ -33,10 +33,10 @@
       margin-bottom: 24px;
     }
 
-    /* Welcome card — updated with professional soft blue */
+    /* Updated welcome card — clearly visible soft blue */
     .welcome-card {
-      background: #eef2ff; /* softer, cleaner than f0f4ff */
-      border: 1px solid #cdd6ff;
+      background: #e6ebff; /* More noticeable than previous */
+      border: 1px solid #b8c4ff;
     }
 
     /* Kurdish text styles */
@@ -98,18 +98,25 @@
       unicode-bidi: embed;
     }
 
+    .contact-section {
+      text-align: center;
+      direction: ltr;
+      unicode-bidi: embed;
+      margin-top: 16px;
+    }
+
     .contact-instruction {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       direction: rtl;
       text-align: center;
       unicode-bidi: embed;
       font-size: 18px;
-      margin: 24px 0 16px;
+      margin-bottom: 12px;
       color: #333;
     }
 
     .footer {
-      margin-top: 60px; /* ~3–4 lines of space */
+      margin-top: 48px; /* 3–4 lines of space above "Developed by" */
       font-size: 14px;
       color: #666;
       text-align: center;
@@ -149,7 +156,7 @@
       }
 
       .footer {
-        margin-top: 50px;
+        margin-top: 40px;
       }
     }
   </style>
@@ -174,14 +181,17 @@
       </div>
     </div>
 
-    <!-- New Kurdish instruction line -->
+    <!-- Contact section: Kurdish instruction + contact details together -->
     <div class="contact-instruction">
       ئەگەر پرسیارت هەبوو یان پێویستت بە هەر هاوکارییەك بوو، دوودڵ مەبە و پەیوەندیمان پێوە بکە:
     </div>
-
-    <div class="footer">
+    <div class="contact-section">
       <p>Email: s.mubarakmohammed25@gmail.com<br>Phone number: 0750 467 5309</p>
-      <p style="margin-top: 16px;">Developed by: Mubarak Mohammed</p>
+    </div>
+
+    <!-- Footer: only "Developed by" and copyright, spaced down -->
+    <div class="footer">
+      <p>Developed by: Mubarak Mohammed</p>
       <p>Copyright © 2026</p>
     </div>
   </div>
