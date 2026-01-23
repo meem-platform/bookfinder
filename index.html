@@ -5,17 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BookFinder – Academic Book Finder</title>
   <link href="https://fonts.googleapis.com/css2?family=Unikurd+Jino&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary-color: #3A50D1;
-      --primary-hover: #2a3db5;
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --accent-soft: #eef2ff;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -23,42 +14,90 @@
     }
 
     body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-color);
-      background-image: radial-gradient(circle at top right, #e0e7ff 0%, transparent 40%),
-                        radial-gradient(circle at bottom left, #e0e7ff 0%, transparent 40%);
-      color: var(--text-main);
-      line-height: 1.7;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      color: #1e293b;
+      line-height: 1.6;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .container {
+      max-width: 800px;
       width: 100%;
-      max-width: 550px;
       margin: 0 auto;
+      padding: 20px;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-      padding: 40px 30px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    /* Welcome Card Styling */
-    .welcome-card {
-      background: linear-gradient(135deg, #3A50D1 0%, #5b72f2 100%);
-      color: white;
+    /* Header with logo */
+    .header {
       text-align: center;
-      padding: 30px;
-      margin-bottom: 20px;
-      box-shadow: 0 20px 25px -5px rgba(58, 80, 209, 0.2);
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(58, 80, 209, 0.1);
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(58, 80, 209, 0.2);
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+
+    /* Card design */
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Welcome card */
+    .welcome-card {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e6ebff 100%);
+      border: 1px solid #c7d2fe;
+      text-align: center;
+      padding: 40px 30px;
     }
 
     .kurdish-text {
@@ -69,171 +108,355 @@
     }
 
     .welcome-card h1 {
-      font-family: 'Unikurd Jino', sans-serif;
-      font-size: 32px;
-      margin: 0;
-      letter-spacing: 1px;
+      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 36px;
+      color: #3A50D1;
+      direction: rtl;
+      text-align: center;
+      unicode-bidi: embed;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
-    /* Icon Placeholder - Simple CSS Book Icon */
-    .icon-circle {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
+    .welcome-subtitle {
+      font-size: 18px;
+      color: #475569;
+      margin-top: 10px;
     }
 
+    /* Main content card */
     .instruction {
-      font-size: 19px;
-      font-weight: 500;
-      margin-bottom: 30px;
-      color: var(--text-main);
+      font-size: 20px;
+      margin: 30px 0;
+      color: #334155;
+      line-height: 1.8;
     }
 
     .button-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 30px;
+      margin: 40px 0;
     }
 
     .download-btn {
-      display: inline-block;
-      padding: 18px 60px;
-      background: var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px 70px;
+      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
       color: white;
       text-decoration: none;
-      border-radius: 16px;
+      border-radius: 14px;
       font-size: 22px;
-      font-weight: bold;
-      font-family: 'Unikurd Jino', sans-serif;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 14px 0 rgba(58, 80, 209, 0.39);
+      font-weight: 700;
+      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
+      transition: all 0.3s ease;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s ease;
     }
 
     .download-btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(58, 80, 209, 0.4);
     }
 
-    .download-btn:active {
-      transform: translateY(0);
+    .download-btn:hover:before {
+      left: 100%;
+    }
+
+    .download-icon {
+      font-size: 24px;
     }
 
     .note {
-      background: var(--accent-soft);
-      padding: 20px;
+      background: #f8fafc;
+      padding: 24px;
       border-radius: 16px;
-      font-size: 15px;
+      margin-top: 40px;
+      font-size: 16px;
       color: #475569;
-      border-right: 4px solid var(--primary-color);
+      direction: rtl;
+      text-align: right;
+      unicode-bidi: embed;
+      border-right: 4px solid #c7d2fe;
       line-height: 1.8;
     }
 
-    /* Contact Section */
-    .contact-wrapper {
-      padding: 0 10px;
+    .note-title {
+      font-weight: 700;
+      color: #3A50D1;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    /* Contact section */
+    .contact-section-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      text-align: center;
+      border: 1px solid rgba(226, 232, 240, 0.8);
     }
 
     .contact-instruction {
-      font-family: 'Unikurd Jino', sans-serif;
+      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       direction: rtl;
       text-align: center;
-      font-size: 17px;
-      margin-bottom: 15px;
-      color: var(--text-main);
+      unicode-bidi: embed;
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #334155;
+      line-height: 1.8;
     }
 
-    .contact-section {
-      text-align: center;
+    .contact-details {
       background: white;
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 30px;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      max-width: 500px;
+      width: 100%;
     }
 
-    .contact-section p {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+    }
+
+    .contact-text {
+      text-align: left;
+      font-size: 18px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .contact-label {
       font-size: 14px;
-      color: var(--text-muted);
-      margin: 0;
+      color: #64748b;
+      margin-bottom: 4px;
     }
 
     /* Footer */
     .footer {
       margin-top: 60px;
-      padding-bottom: 20px;
-      font-size: 13px;
-      color: var(--text-muted);
+      font-size: 15px;
+      color: #64748b;
       text-align: center;
-      border-top: 1px solid #e2e8f0;
-      padding-top: 20px;
+      direction: ltr;
+      unicode-bidi: embed;
+      line-height: 1.6;
+      padding-top: 30px;
+      border-top: 1px solid rgba(226, 232, 240, 0.8);
+      width: 100%;
     }
 
-    .footer p {
-      margin: 4px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .developer-info {
+      font-weight: 600;
+      color: #3A50D1;
+      margin-bottom: 10px;
+      font-size: 17px;
     }
 
-    /* Mobile Adjustments */
-    @media (max-width: 480px) {
+    .copyright {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
       .card {
         padding: 30px 20px;
       }
+      
+      .welcome-card h1 {
+        font-size: 30px;
+      }
+      
+      .instruction, .contact-instruction {
+        font-size: 18px;
+      }
+      
+      .download-btn {
+        width: 100%;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 12px;
+      }
+      
+      .contact-details {
+        padding: 20px;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      
+      .contact-text {
+        text-align: center;
+      }
+    }
 
+    @media (max-width: 480px) {
+      .card {
+        padding: 25px 15px;
+      }
+      
       .welcome-card h1 {
         font-size: 26px;
       }
-
-      .instruction {
-        font-size: 17px;
+      
+      .instruction, .contact-instruction {
+        font-size: 16px;
       }
-
+      
       .download-btn {
-        width: 100%;
-        font-size: 20px;
+        font-size: 18px;
+        padding: 18px;
+      }
+      
+      .note {
+        font-size: 15px;
+        padding: 20px;
+      }
+      
+      .footer {
+        margin-top: 40px;
+      }
+      
+      .logo-text {
+        font-size: 24px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="card welcome-card">
-      <div class="icon-circle">📚</div>
-      <h1 class="kurdish-text">بــەخــێـــر بـێــیـت</h1>
+    <!-- Header with logo -->
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <div class="logo-text">BookFinder</div>
+      </div>
+      <div class="tagline">Academic Book Finder - Find your study resources with ease</div>
     </div>
 
+    <!-- Welcome Card -->
+    <div class="card welcome-card">
+      <h1 class="kurdish-text">بــەخــێـــر بـێــیـت</h1>
+      <div class="welcome-subtitle">Welcome to BookFinder - Your academic companion</div>
+    </div>
+
+    <!-- Main Content Card -->
     <div class="card">
       <div class="kurdish-text instruction">بۆ دابەزاندنی ئەپڵیکەیشنی BookFinder، تکایە کلیك لە دوگمەی "دابەزاندن" بکە.</div>
       
       <div class="button-container">
-        <a href="https://drive.google.com/file/d/1EWmers5G-_2zqjSGnS9Ipf8DyFdS09b_/view?usp=sharing" class="download-btn">دابــەزانــدن</a>
+        <a href="https://drive.google.com/file/d/1EWmers5G-_2zqjSGnS9Ipf8DyFdS09b_/view?usp=sharing" class="download-btn">
+          <i class="fas fa-download download-icon"></i>
+          دابــەزانــدن
+        </a>
       </div>
 
-      <div class="kurdish-text note">
+      <div class="note">
+        <div class="note-title">تێبینی:</div>
         دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر لێت داوا کرا، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
       </div>
     </div>
 
-    <div class="contact-wrapper">
-        <div class="contact-instruction">
-          ئەگەر پرسیارت هەبوو یان پێویستت بە هاوکاری بوو، تکایە دوودڵ مەبە لەوەی پەیوەندیمان پێوە بکەیت:
+    <!-- Contact section -->
+    <div class="contact-section-container">
+      <div class="contact-instruction">
+        ئەگەر پرسیارت هەبوو یان پێویستت بە هاوکاری بوو، تکایە دوودڵ مەبە لەوەی پەیوەندیمان پێوە بکەیت:
+      </div>
+      
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Email</div>
+            s.mubarakmohammed25@gmail.com
+          </div>
         </div>
-        <div class="contact-section">
-          <p><strong>Email:</strong> s.mubarakmohammed25@gmail.com</p>
-          <p><strong>Phone:</strong> 0750 467 5309</p>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">
+            <div class="contact-label">Phone Number</div>
+            0750 467 5309
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
-      <p>Developed by: Mubarak Mohammed</p>
-      <p>Copyright © 2026</p>
+      <div class="developer-info">Developed by: Mubarak Mohammed</div>
+      <div class="copyright">Copyright © 2026 BookFinder. All rights reserved.</div>
     </div>
   </div>
+
+  <script>
+    // Simple animation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
+  </script>
 </body>
 </html>
