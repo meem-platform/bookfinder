@@ -29,7 +29,7 @@
       max-width: 800px;
       width: 100%;
       margin: 0 auto;
-      padding: 20px;
+      padding: 0;
     }
 
     /* Header with logo */
@@ -38,6 +38,9 @@
       margin-bottom: 30px;
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(58, 80, 209, 0.1);
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     .logo-container {
@@ -76,20 +79,21 @@
       letter-spacing: 0.5px;
     }
 
-    /* Card design - All cards now have same width */
-    .card {
+    /* Card design - All cards now have identical width on all screens */
+    .card, .contact-section-container {
       background: white;
       border-radius: 20px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
       padding: 40px;
-      margin-bottom: 30px;
+      margin: 0 20px 30px 20px; /* Same horizontal margins on all screens */
       border: 1px solid rgba(226, 232, 240, 0.8);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 100%;
+      width: calc(100% - 40px); /* Ensures identical width on all screens */
       max-width: 100%;
+      box-sizing: border-box;
     }
 
-    .card:hover {
+    .card:hover, .contact-section-container:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
     }
@@ -140,6 +144,7 @@
       margin: 40px 0;
     }
 
+    /* Pill-shaped button for both desktop and mobile */
     .download-btn {
       display: inline-flex;
       align-items: center;
@@ -149,7 +154,7 @@
       background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
       color: white;
       text-decoration: none;
-      border-radius: 14px;
+      border-radius: 50px; /* Pill shape */
       font-size: 22px;
       font-weight: 700;
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
@@ -158,6 +163,8 @@
       box-shadow: 0 6px 20px rgba(58, 80, 209, 0.3);
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
     }
 
     .download-btn:before {
@@ -206,17 +213,7 @@
       font-size: 18px;
     }
 
-    /* Contact section - Now uses same card style */
-    .contact-section-container {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      text-align: center;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      width: 100%;
-    }
-
+    /* Contact section */
     .contact-instruction {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       direction: rtl;
@@ -242,10 +239,8 @@
     .contact-item {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 20px;
       margin-bottom: 25px;
-      text-align: left;
       width: 100%;
     }
 
@@ -268,12 +263,11 @@
     }
 
     .contact-text {
-      text-align: left;
+      flex: 1;
       font-size: 18px;
       color: #334155;
       font-weight: 500;
       word-break: break-word;
-      width: 100%;
     }
 
     .contact-label {
@@ -283,7 +277,51 @@
       font-weight: 600;
     }
 
-    /* Reduced font size for email to prevent overflow */
+    /* Copiable contact info styling */
+    .copiable-info {
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 10px;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s ease;
+      position: relative;
+      user-select: all;
+      -webkit-user-select: all;
+      -moz-user-select: all;
+      -ms-user-select: all;
+    }
+
+    .copiable-info:hover {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .copiable-info:active {
+      background-color: #e2e8f0;
+    }
+
+    .copiable-info::after {
+      content: '📋 Click to copy';
+      font-size: 12px;
+      color: #64748b;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .copiable-info:hover::after {
+      opacity: 1;
+    }
+
+    .copiable-info.copied::after {
+      content: '✓ Copied!';
+      color: #10b981;
+    }
+
     .email-address {
       font-size: 16px;
       word-break: break-all;
@@ -301,6 +339,8 @@
       padding-top: 30px;
       border-top: 1px solid rgba(226, 232, 240, 0.8);
       width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     .developer-info {
@@ -315,14 +355,38 @@
       color: #94a3b8;
     }
 
+    /* Toast notification for copy feedback */
+    .copy-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: #10b981;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .container {
-        padding: 10px;
+        padding: 0;
       }
       
       .card, .contact-section-container {
         padding: 30px 20px;
+        margin: 0 20px 30px 20px; /* Same margins on mobile */
+        width: calc(100% - 40px); /* Ensures identical width */
       }
       
       .welcome-card h1 {
@@ -333,11 +397,12 @@
         font-size: 18px;
       }
       
+      /* Pill-shaped button on mobile */
       .download-btn {
         width: 100%;
-        padding: 20px;
+        padding: 18px 20px;
         font-size: 20px;
-        border-radius: 12px;
+        border-radius: 50px; /* Maintain pill shape */
       }
       
       .contact-details {
@@ -352,16 +417,40 @@
       
       .contact-text {
         text-align: center;
+        width: 100%;
       }
       
       .email-address {
         font-size: 15px;
       }
+      
+      .copiable-info::after {
+        position: static;
+        display: block;
+        margin-top: 5px;
+        opacity: 1;
+        transform: none;
+      }
+      
+      .copiable-info:hover::after {
+        opacity: 1;
+      }
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 15px 10px;
+      }
+      
       .card, .contact-section-container {
         padding: 25px 15px;
+        margin: 0 15px 25px 15px; /* Same margins on small mobile */
+        width: calc(100% - 30px); /* Ensures identical width */
+      }
+      
+      .header, .footer {
+        padding-left: 15px;
+        padding-right: 15px;
       }
       
       .welcome-card h1 {
@@ -372,9 +461,11 @@
         font-size: 16px;
       }
       
+      /* Pill-shaped button on small mobile */
       .download-btn {
         font-size: 18px;
-        padding: 18px;
+        padding: 16px 20px;
+        border-radius: 50px; /* Maintain pill shape */
       }
       
       .note {
@@ -449,7 +540,7 @@
           </div>
           <div class="contact-text">
             <div class="contact-label">Email</div>
-            <div class="email-address">s.mubarakmohammed25@gmail.com</div>
+            <div class="copiable-info email-address" data-text="s.mubarakmohammed25@gmail.com">s.mubarakmohammed25@gmail.com</div>
           </div>
         </div>
         
@@ -459,7 +550,7 @@
           </div>
           <div class="contact-text">
             <div class="contact-label">Phone Number</div>
-            0750 467 5309
+            <div class="copiable-info" data-text="0750 467 5309">0750 467 5309</div>
           </div>
         </div>
       </div>
@@ -471,6 +562,9 @@
       <div class="copyright">Copyright © 2026 BookFinder. All rights reserved.</div>
     </div>
   </div>
+
+  <!-- Toast notification for copy feedback -->
+  <div class="copy-toast" id="copyToast"></div>
 
   <script>
     // Simple animation on page load
@@ -486,7 +580,72 @@
           card.style.transform = 'translateY(0)';
         }, 100 * index);
       });
+      
+      // Make contact info copiable
+      setupCopiableInfo();
     });
+    
+    // Function to make contact info copiable
+    function setupCopiableInfo() {
+      const copiableElements = document.querySelectorAll('.copiable-info');
+      const toast = document.getElementById('copyToast');
+      
+      copiableElements.forEach(element => {
+        element.addEventListener('click', function() {
+          const textToCopy = this.getAttribute('data-text');
+          
+          // Use the Clipboard API to copy text
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            // Show feedback
+            showCopyFeedback(this, toast);
+          }).catch(err => {
+            // Fallback method for older browsers
+            fallbackCopyText(textToCopy, this, toast);
+          });
+        });
+      });
+    }
+    
+    // Show feedback when text is copied
+    function showCopyFeedback(element, toast) {
+      // Add 'copied' class to the clicked element
+      element.classList.add('copied');
+      
+      // Show toast notification
+      toast.textContent = 'Copied to clipboard!';
+      toast.classList.add('show');
+      
+      // Remove feedback after 2 seconds
+      setTimeout(() => {
+        element.classList.remove('copied');
+        toast.classList.remove('show');
+      }, 2000);
+    }
+    
+    // Fallback method for copying text
+    function fallbackCopyText(text, element, toast) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showCopyFeedback(element, toast);
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+        toast.textContent = 'Failed to copy. Please select and copy manually.';
+        toast.style.backgroundColor = '#ef4444';
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+          toast.style.backgroundColor = '#10b981';
+        }, 3000);
+      }
+      
+      document.body.removeChild(textArea);
+    }
   </script>
 </body>
 </html>
