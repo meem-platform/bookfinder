@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BookFinder – Academic Book Finder</title>
   <link href="https://fonts.googleapis.com/css2?family=Unikurd+Jino&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Global Reset & Centering */
     * {
       margin: 0;
       padding: 0;
@@ -14,449 +14,193 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      color: #1e293b;
-      line-height: 1.6;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: radial-gradient(circle at center, #ffffff 0%, #e2e8f0 100%);
+      color: #1a202c;
       min-height: 100vh;
-      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center; /* Ensures center alignment for all text */
+      padding: 40px 20px;
     }
 
-    .container {
-      max-width: 800px;
+    .wrapper {
       width: 100%;
-      margin: 0 auto;
-      padding: 20px;
+      max-width: 650px;
     }
 
-    /* Header with logo */
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(58, 80, 209, 0.1);
-    }
-
-    .logo-container {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      box-shadow: 0 4px 12px rgba(58, 80, 209, 0.2);
-    }
-
-    .logo-text {
-      font-size: 28px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .tagline {
-      font-size: 16px;
-      color: #64748b;
-      letter-spacing: 0.5px;
-    }
-
-    /* Card design */
-    .card {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      padding: 40px;
-      margin-bottom: 30px;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Welcome card */
-    .welcome-card {
-      background: linear-gradient(135deg, #f0f4ff 0%, #e6ebff 100%);
-      border: 1px solid #c7d2fe;
-      text-align: center;
-      padding: 40px 30px;
-    }
-
+    /* Kurdish text base styles */
     .kurdish-text {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       direction: rtl;
-      text-align: center;
       unicode-bidi: embed;
     }
 
-    .welcome-card h1 {
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      font-size: 36px;
-      color: #3A50D1;
-      direction: rtl;
-      text-align: center;
-      unicode-bidi: embed;
-      margin-bottom: 10px;
-      font-weight: 700;
+    /* Header Design */
+    header {
+      margin-bottom: 50px;
     }
 
-    .welcome-subtitle {
-      font-size: 18px;
-      color: #475569;
-      margin-top: 10px;
+    h1.welcome-title {
+      font-size: 42px;
+      color: #2d3748;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
     }
 
-    /* Main content card */
+    h1.welcome-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      background: #3A50D1;
+      border-radius: 10px;
+    }
+
+    /* Main Content */
+    .content-section {
+      margin-bottom: 40px;
+    }
+
     .instruction {
-      font-size: 20px;
-      margin: 30px 0;
-      color: #334155;
-      line-height: 1.8;
+      font-size: 22px;
+      line-height: 1.6;
+      color: #4a5568;
+      margin-bottom: 40px;
     }
 
-    .button-container {
-      display: flex;
-      justify-content: center;
-      margin: 40px 0;
-    }
-
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px 70px;
-      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
+    /* Pill-Shaped Button */
+    .btn-pill {
+      display: inline-block;
+      padding: 20px 80px;
+      background-color: #3A50D1;
       color: white;
       text-decoration: none;
-      border-radius: 14px;
-      font-size: 22px;
-      font-weight: 700;
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      transition: all 0.3s ease;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .download-btn:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.7s ease;
-    }
-
-    .download-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(58, 80, 209, 0.4);
-    }
-
-    .download-btn:hover:before {
-      left: 100%;
-    }
-
-    .download-icon {
+      border-radius: 100px; /* Full Pill Shape */
       font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 20px rgba(58, 80, 209, 0.2);
+      border: 2px solid transparent;
     }
 
-    .note {
-      background: #f8fafc;
-      padding: 24px;
-      border-radius: 16px;
-      margin-top: 40px;
-      font-size: 16px;
-      color: #475569;
-      direction: rtl;
-      text-align: right;
-      unicode-bidi: embed;
-      border-right: 4px solid #c7d2fe;
-      line-height: 1.8;
-    }
-
-    .note-title {
-      font-weight: 700;
+    .btn-pill:hover {
+      background-color: transparent;
       color: #3A50D1;
-      margin-bottom: 10px;
-      font-size: 18px;
+      border-color: #3A50D1;
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(58, 80, 209, 0.1);
     }
 
-    /* Contact section */
-    .contact-section-container {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 40px 0;
-      text-align: center;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-    }
-
-    .contact-instruction {
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      direction: rtl;
-      text-align: center;
-      unicode-bidi: embed;
-      font-size: 20px;
-      margin-bottom: 30px;
-      color: #334155;
-      line-height: 1.8;
-    }
-
-    .contact-details {
-      background: white;
-      border-radius: 16px;
+    /* Note Box */
+    .note-container {
+      margin-top: 50px;
       padding: 30px;
-      display: inline-block;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      max-width: 500px;
-      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 16px;
+      color: #718096;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .contact-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, #3A50D1 0%, #2a3db5 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 22px;
-    }
-
-    .contact-text {
-      text-align: left;
-      font-size: 18px;
-      color: #334155;
-      font-weight: 500;
-    }
-
-    .contact-label {
-      font-size: 14px;
-      color: #64748b;
-      margin-bottom: 4px;
-    }
-
-    /* Footer */
-    .footer {
+    /* Contact Details */
+    .contact-wrapper {
       margin-top: 60px;
-      font-size: 15px;
-      color: #64748b;
-      text-align: center;
-      direction: ltr;
-      unicode-bidi: embed;
-      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .contact-title {
+      font-size: 18px;
+      color: #2d3748;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      font-size: 16px;
+      color: #3A50D1;
+      font-weight: 600;
+      line-height: 1.8;
+    }
+
+    /* Footer Spacing */
+    footer {
+      margin-top: 100px;
+      font-size: 14px;
+      color: #a0aec0;
+      border-top: 1px solid #cbd5e0;
       padding-top: 30px;
-      border-top: 1px solid rgba(226, 232, 240, 0.8);
       width: 100%;
     }
 
-    .developer-info {
-      font-weight: 600;
-      color: #3A50D1;
-      margin-bottom: 10px;
-      font-size: 17px;
+    footer p {
+      margin: 5px 0;
     }
 
-    .copyright {
-      font-size: 14px;
-      color: #94a3b8;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .container {
-        padding: 10px;
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      h1.welcome-title {
+        font-size: 32px;
       }
-      
-      .card {
-        padding: 30px 20px;
-      }
-      
-      .welcome-card h1 {
-        font-size: 30px;
-      }
-      
-      .instruction, .contact-instruction {
+      .instruction {
         font-size: 18px;
       }
-      
-      .download-btn {
-        width: 100%;
-        padding: 20px;
+      .btn-pill {
+        padding: 15px 50px;
         font-size: 20px;
-        border-radius: 12px;
+        width: 100%;
       }
-      
-      .contact-details {
-        padding: 20px;
-      }
-      
-      .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-      
-      .contact-text {
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 25px 15px;
-      }
-      
-      .welcome-card h1 {
-        font-size: 26px;
-      }
-      
-      .instruction, .contact-instruction {
-        font-size: 16px;
-      }
-      
-      .download-btn {
-        font-size: 18px;
-        padding: 18px;
-      }
-      
-      .note {
-        font-size: 15px;
-        padding: 20px;
-      }
-      
-      .footer {
-        margin-top: 40px;
-      }
-      
-      .logo-text {
-        font-size: 24px;
+      .note-container {
+        font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header with logo -->
-    <div class="header">
-      <div class="logo-container">
-        <div class="logo-icon">
-          <i class="fas fa-book-open"></i>
-        </div>
-        <div class="logo-text">BookFinder</div>
-      </div>
-      <div class="tagline">Academic Book Finder - Find your study resources with ease</div>
-    </div>
 
-    <!-- Welcome Card -->
-    <div class="card welcome-card">
-      <h1 class="kurdish-text">بــەخــێـــر بـێــیـت</h1>
-      <div class="welcome-subtitle">Welcome to BookFinder - Your academic companion</div>
-    </div>
+  <div class="wrapper">
+    <header>
+      <h1 class="kurdish-text welcome-title">بــەخــێـــر بـێــیـت</h1>
+    </header>
 
-    <!-- Main Content Card -->
-    <div class="card">
-      <div class="kurdish-text instruction">بۆ دابەزاندنی ئەپڵیکەیشنی BookFinder، تکایە کلیك لە دوگمەی "دابەزاندن" بکە.</div>
-      
-      <div class="button-container">
-        <a href="https://drive.google.com/file/d/1EWmers5G-_2zqjSGnS9Ipf8DyFdS09b_/view?usp=sharing" class="download-btn">
-          <i class="fas fa-download download-icon"></i>
-          دابــەزانــدن
-        </a>
+    <main class="content-section">
+      <div class="kurdish-text instruction">
+        بۆ دابەزاندنی ئەپڵیکەیشنی BookFinder، تکایە کلیك لە دوگمەی "دابەزاندن" بکە.
       </div>
 
-      <div class="note">
-        <div class="note-title">تێبینی:</div>
+      <div>
+        <a href="https://drive.google.com/file/d/1EWmers5G-_2zqjSGnS9Ipf8DyFdS09b_/view?usp=sharing" class="kurdish-text btn-pill">دابــەزانــدن</a>
+      </div>
+
+      <div class="kurdish-text note-container">
         دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر لێت داوا کرا، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
       </div>
-    </div>
+    </main>
 
-    <!-- Contact section -->
-    <div class="contact-section-container">
-      <div class="contact-instruction">
+    <section class="contact-wrapper">
+      <div class="kurdish-text contact-title">
         ئەگەر پرسیارت هەبوو یان پێویستت بە هاوکاری بوو، تکایە دوودڵ مەبە لەوەی پەیوەندیمان پێوە بکەیت:
       </div>
-      
-      <div class="contact-details">
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-text">
-            <div class="contact-label">Email</div>
-            s.mubarakmohammed25@gmail.com
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <div class="contact-text">
-            <div class="contact-label">Phone Number</div>
-            0750 467 5309
-          </div>
-        </div>
+      <div class="contact-info">
+        Email: s.mubarakmohammed25@gmail.com<br>
+        Phone number: 0750 467 5309
       </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-      <div class="developer-info">Developed by: Mubarak Mohammed</div>
-      <div class="copyright">Copyright © 2026 BookFinder. All rights reserved.</div>
-    </div>
+    <footer>
+      <p>Developed by: Mubarak Mohammed</p>
+      <p>Copyright © 2026</p>
+    </footer>
   </div>
 
-  <script>
-    // Simple animation on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-    });
-  </script>
 </body>
 </html>
