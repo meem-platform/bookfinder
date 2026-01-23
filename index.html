@@ -6,6 +6,16 @@
   <title>BookFinder – Academic Book Finder</title>
   <link href="https://fonts.googleapis.com/css2?family=Unikurd+Jino&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #3A50D1;
+      --primary-hover: #2a3db5;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --accent-soft: #eef2ff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,33 +23,44 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #f5f7ff;
-      color: #333;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      background-image: radial-gradient(circle at top right, #e0e7ff 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, #e0e7ff 0%, transparent 40%);
+      color: var(--text-main);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
-      line-height: 1.6;
     }
 
     .container {
-      max-width: 600px;
+      width: 100%;
+      max-width: 550px;
       margin: 0 auto;
     }
 
     .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.12);
-      padding: 32px 24px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      padding: 40px 30px;
       margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
-    /* Updated welcome card — clearly visible soft blue */
+    /* Welcome Card Styling */
     .welcome-card {
-      background: #e6ebff; /* More noticeable than previous */
-      border: 1px solid #b8c4ff;
+      background: linear-gradient(135deg, #3A50D1 0%, #5b72f2 100%);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 25px -5px rgba(58, 80, 209, 0.2);
     }
 
-    /* Kurdish text styles */
     .kurdish-text {
       font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
       direction: rtl;
@@ -48,148 +69,167 @@
     }
 
     .welcome-card h1 {
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      font-size: 28px;
-      color: #3A50D1;
-      direction: rtl;
-      text-align: center;
-      unicode-bidi: embed;
+      font-family: 'Unikurd Jino', sans-serif;
+      font-size: 32px;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    /* Icon Placeholder - Simple CSS Book Icon */
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
 
     .instruction {
-      font-size: 18px;
-      margin: 24px 0;
-      color: #444;
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 30px;
+      color: var(--text-main);
     }
 
     .button-container {
       display: flex;
       justify-content: center;
-      margin: 24px 0;
+      margin-bottom: 30px;
     }
 
     .download-btn {
       display: inline-block;
-      padding: 16px 64px;
-      background: #3A50D1;
+      padding: 18px 60px;
+      background: var(--primary-color);
       color: white;
       text-decoration: none;
-      border-radius: 50px;
-      font-size: 20px;
+      border-radius: 16px;
+      font-size: 22px;
       font-weight: bold;
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      transition: background 0.3s ease;
-      text-align: center;
+      font-family: 'Unikurd Jino', sans-serif;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px 0 rgba(58, 80, 209, 0.39);
     }
 
     .download-btn:hover {
-      background: #2a3db5;
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(58, 80, 209, 0.45);
+    }
+
+    .download-btn:active {
+      transform: translateY(0);
     }
 
     .note {
-      background: #f9faff;
-      padding: 16px;
-      border-radius: 12px;
-      margin-top: 24px;
+      background: var(--accent-soft);
+      padding: 20px;
+      border-radius: 16px;
       font-size: 15px;
-      color: #555;
+      color: #475569;
+      border-right: 4px solid var(--primary-color);
+      line-height: 1.8;
+    }
+
+    /* Contact Section */
+    .contact-wrapper {
+      padding: 0 10px;
+    }
+
+    .contact-instruction {
+      font-family: 'Unikurd Jino', sans-serif;
       direction: rtl;
       text-align: center;
-      unicode-bidi: embed;
+      font-size: 17px;
+      margin-bottom: 15px;
+      color: var(--text-main);
     }
 
     .contact-section {
       text-align: center;
-      direction: ltr;
-      unicode-bidi: embed;
-      margin-top: 16px;
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px dashed #cbd5e1;
     }
 
-    .contact-instruction {
-      font-family: 'Unikurd Jino', 'Segoe UI', Tahoma, sans-serif;
-      direction: rtl;
-      text-align: center;
-      unicode-bidi: embed;
-      font-size: 18px;
-      margin-bottom: 12px;
-      color: #333;
-    }
-
-    .footer {
-      margin-top: 48px; /* 3–4 lines of space above "Developed by" */
+    .contact-section p {
       font-size: 14px;
-      color: #666;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      padding-bottom: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
       text-align: center;
-      direction: ltr;
-      unicode-bidi: embed;
-      line-height: 1.6;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 20px;
     }
 
     .footer p {
-      margin: 6px 0;
+      margin: 4px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
+    /* Mobile Adjustments */
     @media (max-width: 480px) {
       .card {
-        padding: 24px 16px;
+        padding: 30px 20px;
       }
 
       .welcome-card h1 {
-        font-size: 24px;
+        font-size: 26px;
       }
 
-      .instruction,
-      .contact-instruction {
-        font-size: 16px;
+      .instruction {
+        font-size: 17px;
       }
 
       .download-btn {
         width: 100%;
-        padding: 16px;
-        font-size: 18px;
-        border-radius: 50px;
-      }
-
-      .note {
-        font-size: 14px;
-        padding: 12px;
-      }
-
-      .footer {
-        margin-top: 40px;
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Welcome Card -->
     <div class="card welcome-card">
+      <div class="icon-circle">📚</div>
       <h1 class="kurdish-text">بــەخــێـــر بـێــیـت</h1>
     </div>
 
-    <!-- Main Content Card -->
     <div class="card">
       <div class="kurdish-text instruction">بۆ دابەزاندنی ئەپڵیکەیشنی BookFinder، تکایە کلیك لە دوگمەی "دابەزاندن" بکە.</div>
       
       <div class="button-container">
-        <a href="https://drive.google.com/uc?export=download&id=1JHEg6MDppQQu-_w1m-QWjLCLMgp0rHyI" class="download-btn">دابــەزانــدن</a>
+        <a href="https://drive.google.com/file/d/1EWmers5G-_2zqjSGnS9Ipf8DyFdS09b_/view?usp=sharing" class="download-btn">دابــەزانــدن</a>
       </div>
 
       <div class="kurdish-text note">
-        دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر پێویستی کرد، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
+        دوای دابەزاندنی فایلی ئەپڵیکەیشنەکە، ئەگەر لێت داوا کرا، ئەم بژاردەیە "Install unknown apps" کارا بکە، بۆ ئەوەی ئەپڵیکەیشنەکە لەسەر مۆبایلەکەت دابمەزرێت.
       </div>
     </div>
 
-    <!-- Contact section: Kurdish instruction + contact details together -->
-    <div class="contact-instruction">
-      ئەگەر پرسیارت هەبوو یان پێویستت بە هەر هاوکارییەك بوو، دوودڵ مەبە و پەیوەندیمان پێوە بکە:
-    </div>
-    <div class="contact-section">
-      <p>Email: s.mubarakmohammed25@gmail.com<br>Phone number: 0750 467 5309</p>
+    <div class="contact-wrapper">
+        <div class="contact-instruction">
+          ئەگەر پرسیارت هەبوو یان پێویستت بە هاوکاری بوو، تکایە دوودڵ مەبە لەوەی پەیوەندیمان پێوە بکەیت:
+        </div>
+        <div class="contact-section">
+          <p><strong>Email:</strong> s.mubarakmohammed25@gmail.com</p>
+          <p><strong>Phone:</strong> 0750 467 5309</p>
+        </div>
     </div>
 
-    <!-- Footer: only "Developed by" and copyright, spaced down -->
     <div class="footer">
       <p>Developed by: Mubarak Mohammed</p>
       <p>Copyright © 2026</p>
